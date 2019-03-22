@@ -1,0 +1,22 @@
+body {
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column;
+}
+
+main {
+  flex: 1 0 auto;
+}
+
+body {
+  background: #e3f2fd;
+}
+
+.logo {
+  margin: 20px 0;
+}
+
+.card-form {
+  margin: 0px;
+  padding: 2px;
+}

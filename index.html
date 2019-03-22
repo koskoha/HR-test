@@ -1,45 +1,94 @@
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    <link
-      href="https://fonts.googleapis.com/icon?family=Material+Icons"
-      rel="stylesheet"
-    />
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css"
-    />
-    <link type="text/css" rel="stylesheet" href="css/styles.css" />
-    <title>test</title>
-  </head>
-  <body>
-    <div>
-      <div class="card">
-        <div class="">
-          <embed class="col s12" src="static/presentation.pdf" width="100%" height="90%" />
-        </div>
-        <div class="card-content blue-grey darken-1">
-          <span class="card-title white-text">
-              Job Discrimination at Work Place 
-            <span class="btn-floating btn-large  light-blue darken-3 right activator">
-              Test
-            </span>
-          <p><a href="#">Additional Resources</a></p>
-        </div>
-        <div class="card-reveal">
-          <span class="card-title grey-text text-darken-4"
-            >Test<i class="material-icons right">close</i></span
-          >
-          <p>
-            Here is some more information about this product that is only
-            revealed once clicked on.
-          </p>
+<html>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.5/css/materialize.min.css">
+  <link rel="stylesheet" type="text/css" href="./css/index.css">
+</head>
+
+<body>
+  <main>
+    <!--Sign In card-->
+    <div class="row center">
+      <!--Branding logo-->
+      <div class="col s12 center-align center logo">
+        <img src="./images/logo.png" alt="App Logo" class="responsive-img logo-img"/>
+      </div>
+      <div class="col s12 m10 offset-m1 l6 offset-l3">
+        <div class="card sticky-action z-depth-4 card-panel hoverable card-form">
+          <!--Login fields-->
+          <form role="form" id="contactForm" >
+            <div class="card-content" >
+              <div class="row center-align">
+                <span class="card-title grey-text text-darken-4 center-align">Enter Your Information</span>
+                <div class="input-field col s12">
+                  <i class="material-icons prefix center">account_circle</i>
+                  <input 
+                    id="name"
+                    type='text'
+                    name='name'
+                    class="validate left-align"
+                    required="true"
+                    placeholder="Full Name"/>
+
+                  <label for="name" class="left-align">
+                    Enter Your Full Name
+                  </label>
+                </div>
+                <div class="input-field col s12">
+                  <i class="material-icons prefix center">home</i>
+                  <input
+                    type='text'
+                    name='address'
+                    id='address'
+                    class="validate"
+                    required="true"
+                    placeholder="Your Address"/>
+
+                  <label for="address" class=" left-align">
+                    Enter Your Address
+                  </label>
+                </div>
+              </div>
+              
+              <button type="submit" class="waves-effect waves-light btn" id="submit">
+                Proceed To Resources
+              </button>
+            </div>
+          </form>
+          <!--More actions -->
+          <div class="card-action " style=" margin : 2px; padding-bottom:0px ;padding-top : 5px">
+            <div class="row ">
+              <div class="col s6 left-align valign-wrapper">
+                <a href="#" class="activator btn-flat white orange-text ">
+                  <i class=" fa fa-rocket orange-text white" aria-hidden="true"></i>
+                    Need help?
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <!--Hidden Actions For Help-->
+          <div class="card-reveal">
+            <div class="row center-align">
+              <span class="card-title grey-text text-darken-4">Contact Us
+                <i class="material-icons right">close</i>
+              </span>
+              <div class="input-field col s12">
+                202-650-9228
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </div>
+  </main>
+  
+  <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script></script>
+  <script src="./javascript/index.js" type="text/javascript"></script>
+</body>
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
-  </body>
 </html>
