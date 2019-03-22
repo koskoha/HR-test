@@ -1,30 +1,14 @@
+window.certificate = undefined;
 
-function HTMLtoPDF(){
-  console.log('Create PDF')
-  var pdf = new jsPDF('p', 'pt', 'letter');
-  source = $('#HTMLtoPDF')[0];
-  specialElementHandlers = {
-    '#bypassme': function(element, renderer){
-      return true
+function HTMLtoPDF(save){
+  html2canvas($('#HTMLtoPDF')[0], {windowWidth: 860}).then(function(canvas) {
+    let image = canvas.toDataURL('image/png');
+    window.certificate = image;
+    let doc = new jsPDF('p','mm');
+    doc.addImage(image,'PNG', 0, 10);
+    doc.save('certificate.pdf');
+    if(!save){
+      sendEmail();
     }
-  }
-  margins = {
-      top: 50,
-      left: 60,
-      width: 545
-    };
-  pdf.fromHTML(
-      source // HTML string or DOM elem ref.
-      , margins.left // x coord
-      , margins.top // y coord
-      , {
-        'width': margins.width // max width of content on PDF
-        , 'elementHandlers': specialElementHandlers
-      },
-      function (dispose) {
-        // dispose: object with X, Y of the last line add to the PDF
-        //          this allow the insertion of new lines after html
-          pdf.save('certificate.pdf');
-        }
-    )		
-  }
+  });
+}

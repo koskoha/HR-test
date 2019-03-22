@@ -1,5 +1,4 @@
 function Quiz(questions) {
-    this.score = 0;
     this.questions = questions;
     this.questionIndex = 0;
 }
@@ -10,12 +9,17 @@ Quiz.prototype.getQuestionIndex = function() {
 
 Quiz.prototype.guess = function(answer) {
     if(this.getQuestionIndex().isCorrectAnswer(answer)) {
-        this.score++;
+        this.questionIndex++;
+        return true;
     }
 
-    this.questionIndex++;
+    return false;
 }
 
 Quiz.prototype.isEnded = function() {
     return this.questionIndex === this.questions.length;
+}
+
+Quiz.prototype.getAnswerIndex = function() {
+    return this.getQuestionIndex().getAnswerIndex();
 }
