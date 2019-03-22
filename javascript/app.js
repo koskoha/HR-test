@@ -11,7 +11,7 @@ function HTMLtoPDF(){
 
 function sendEmail() {
   console.log(window)
-  window.open(`mailto:kos.koha@gmail.com?subject=Certificate form ${user.name}&body=Employee Name: ${user.name}; Employee Address: ${user.address}`);
+  window.open(`mailto:klyuchko92@gmail.com?subject=Certificate form ${user.name}&body=Employee Name: ${user.name};    Employee Address: ${user.address}`);
 }
 
 function populate() {
