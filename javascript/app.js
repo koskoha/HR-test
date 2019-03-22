@@ -1,5 +1,13 @@
-
 window.user = new Object;
+
+function HTMLtoPDF(){
+  html2canvas($('#HTMLtoPDF')[0], {windowWidth: 860}).then(function(canvas) {
+    let image = canvas.toDataURL('image/png');
+    let doc = new jsPDF('p','mm');
+    doc.addImage(image,'PNG', 0, 10);
+    doc.save('certificate.pdf');
+  });
+}
 
 function sendEmail() {
   console.log(window)
@@ -89,8 +97,8 @@ function showCertificate() {
       </center>`;
       gameOverHTML += "<div class='row' style='margin-top: 50px'>";
       // gameOverHTML += "<a id='score'> Your scores: " + quiz.score + "</a>";
-      gameOverHTML += "<div class='col s6 center'><a class='btn' onclick='HTMLtoPDF(true)'> Download Certificate </a> </div>";
-      gameOverHTML += "<div class='col s6 center'><a class='btn' onclick='HTMLtoPDF(false)'> Send it to Us </a></div></div>";
+      gameOverHTML += "<div class='col s6 center'><a class='btn' onclick='HTMLtoPDF()'> Download Certificate </a> </div>";
+      gameOverHTML += "<div class='col s6 center'><a class='btn' onclick='sendEmail()'> Send it to Us </a></div></div>";
       var element = document.getElementById("quiz");
       element.innerHTML = gameOverHTML;
     }
