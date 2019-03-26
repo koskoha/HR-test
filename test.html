@@ -1,62 +1,67 @@
 <html lang="en">
-  <head>
-      <link rel="icon" href="./images/icon.ico">
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    <link
-      href="https://fonts.googleapis.com/icon?family=Material+Icons"
-      rel="stylesheet"
-    />
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css"
-    />
-    <link type="text/css" rel="stylesheet" href="css/styles.css" />
-    <title>Strativia</title>
-  </head>
-  <body>
-    <div>
-      <div class="card">
-        <div class="">
-          <embed class="col s12" src="static/presentation.pdf" width="100%" height="90%" />
-        </div>
-        <div class="card-content blue-grey darken-1">
-          <span class="card-title white-text">
-            Job Discrimination at Work Place 
+
+<head>
+  <link rel="icon" href="./images/icon.ico">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css" />
+  <link type="text/css" rel="stylesheet" href="css/styles.css" />
+  <title>Strativia</title>
+</head>
+
+<body>
+  <div>
+    <div class="card">
+      <div class="">
+        <embed class="col s12" src="static/presentation.pdf" width="100%" height="90%" />
+      </div>
+      <div class="card-content blue-grey darken-1">
+        <span class="card-title white-text">
+          Job Discrimination at Work Place
           <span class="btn-floating btn-large  red darken-3 right activator">
             Test
           </span>
-          <p><a href="#">Additional Resources</a></p>
+          <p>
+            <a href="#">Additional Resources</a>
+          </p>
+      </div>
+      <div class="card-reveal">
+        <span class="card-title grey-text text-darken-4">Finish All Questions in Order To Ger Your Certificate.
+          <i class="material-icons right">close</i>
+        </span>
+        <div class="test">
         </div>
-        <div class="card-reveal">
-          <span class="card-title grey-text text-darken-4">Finish All Questions in Order To Ger Your Certificate.
-            <i class="material-icons right">close</i>
-          </span>
-          <div class="test">
-          </div>
-          <div class="row" style="padding-top: 200px">
-            <div class="col s12">
-              <div id="quiz">
-                <div class="card">
-                  <div class="card-image">
-                    <span class="card-title">Card Title</span>
+        <div class="row" style="padding-top: 75px">
+          <div class="col s12">
+            <div id="quiz">
+              <div class="card">
+                <div class="card-image">
+                  <span class="card-title">Card Title</span>
+                </div>
+                <div class="card-content">
+                  <p id="question"></p>
+                </div>
+                <div class="card-action">
+                  <div class="buttons">
+                    <button class="btn white black-text" id="btn0">
+                      <span id="choice0"></span>
+                    </button>
+                    <button class="btn white black-text" id="btn1">
+                      <span id="choice1"></span>
+                    </button>
+                    <button class="btn white black-text" id="btn2">
+                      <span id="choice2"></span>
+                    </button>
+                    <button class="btn white black-text" id="btn3">
+                      <span id="choice3"></span>
+                    </button>
                   </div>
-                  <div class="card-content">
-                    <p id="question"></p>
-                  </div>
-                  <div class="card-action">
-                    <div class="buttons">
-                      <button class="btn white black-text" id="btn0"><span id="choice0"></span></button>
-                      <button class="btn white black-text" id="btn1"><span id="choice1"></span></button>
-                      <button class="btn white black-text" id="btn2"><span id="choice2"></span></button>
-                      <button class="btn white black-text" id="btn3"><span id="choice3"></span></button>
-                    </div>
-                    <hr style="margin-top: 50px">
-                    <footer>
-                        <p id="progress">Question x of y</p>
-                    </footer>
-                  </div>
+                  <hr style="margin-top: 50px">
+                  <footer>
+                    <p id="progress">Question x of y</p>
+                  </footer>
                 </div>
               </div>
             </div>
@@ -64,14 +69,16 @@
         </div>
       </div>
     </div>
-    <script src="./javascript/jspdf.js"></script>
-    <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+  </div>
+  <script src="./javascript/jspdf.js"></script>
+  <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
   <script src="./javascript/user.js" type="text/javascript"></script>
   <script src="./javascript/quiz.js"></script>
-<script src="./javascript/question.js"></script>
-<script src="./javascript/app.js"></script>
-<script src="./javascript/pfgFromHtml.js"></script>
-<script src="./javascript/html2canvas.min.js"></script>
-  </body>
+  <script src="./javascript/question.js"></script>
+  <script src="./javascript/app.js"></script>
+  <script src="./javascript/pfgFromHtml.js"></script>
+  <script src="./javascript/html2canvas.min.js"></script>
+</body>
+
 </html>
