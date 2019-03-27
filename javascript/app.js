@@ -15,7 +15,7 @@
 
     if (isMobile) {
       let element = document.createElement('a');
-      element.setAttribute('href', '../static/certificate.pdf');
+      element.setAttribute('href', './static/certificate.pdf');
       element.setAttribute('download', "certificate.pdf");
 
       element.style.display = 'none';
