@@ -11,6 +11,21 @@
   checkUserInfo();
 
   function HTMLtoPDF(){
+    var isMobile = window.matchMedia("only screen and (max-width: 760px)").matches;
+
+    if (isMobile) {
+      let element = document.createElement('a');
+      element.setAttribute('href', '../static/certificate.pdf');
+      element.setAttribute('download', "certificate.pdf");
+
+      element.style.display = 'none';
+      document.body.appendChild(element);
+
+      element.click();
+
+      document.body.removeChild(element);
+      return
+    }
     html2canvas($('#HTMLtoPDF')[0], {windowWidth: 860}).then(function(canvas) {
       let image = canvas.toDataURL('image/png');
       let doc = new jsPDF('p','mm');
@@ -21,7 +36,7 @@
 
   function sendEmail() {
     const user = getUserInfo();
-    window.open(`mklyuchko@strativia.com?subject=Certificate form ${user.name}&body=Employee Name: ${user.name};    Employee Address: ${user.address}`);
+    window.open(`mailto:mklyuchko@strativia.com?subject=Certificate form ${user.name}&body=Employee Name: ${user.name};    Employee Address: ${user.address}`);
   }
 
   function populate() {
@@ -51,11 +66,9 @@
       button.onclick = function() {
           // quiz.guess(guess);
           if(quiz.guess(guess)){
-              console.log('correct');
               populate();
           }else{
               let index = quiz.getAnswerIndex();
-              console.log(index);
               let answer = document.getElementById('btn'+index);
               answer.classList.remove("white");
               answer.classList.add("green");
@@ -63,7 +76,6 @@
               button.classList.remove("green");
               button.classList.remove("white");
               button.classList.add("red");
-              console.log('wrong');
           }
       }
   };
@@ -100,7 +112,7 @@
           <div class="col s12" style=" padding:20px; text-align:center; border: 10px solid #787878">
             <div class="col s12" style=" padding:20px; text-align:center; border: 5px solid #787878">
               <div>
-                <img class="cert-img" src="./images/strativia-logo.png" alt="Strativia logo" >
+                <img class="cert-img" src="../images/strativia-logo.png" alt="Strativia logo" >
               </div>
               <span class="cert-title" >Certificate of Completion</span>
               <br><br>
