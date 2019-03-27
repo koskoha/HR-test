@@ -1,6 +1,5 @@
 $(document).ready(function () {
 
-
   function checkUserInfo() {
     const user = getUserInfo();
     if(user && user.name && user.address) {

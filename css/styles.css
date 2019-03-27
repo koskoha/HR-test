@@ -80,3 +80,7 @@ body {
   width: 200px;
   text-align: center;
 }
+
+.buttons {
+  margin: 5px;
+}
