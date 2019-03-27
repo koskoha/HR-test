@@ -1,4 +1,3 @@
-$(document).ready(function () {
 
   function checkUserInfo() {
     const user = getUserInfo();
@@ -21,7 +20,7 @@ $(document).ready(function () {
   }
 
   function sendEmail() {
-    console.log(window)
+    const user = getUserInfo();
     window.open(`mailto:klyuchko92@gmail.com?subject=Certificate form ${user.name}&body=Employee Name: ${user.name};    Employee Address: ${user.address}`);
   }
 
@@ -96,19 +95,23 @@ $(document).ready(function () {
       if ( user && user.name && user.address) {
         var options = { year: 'numeric', month: 'long', day: 'numeric' };
         var today  = new Date();
-        var gameOverHTML = `<center id='HTMLtoPDF'>
-        <div style="width:770px; padding:20px; text-align:center; border: 10px solid #787878">
-          <div style="width:710px; padding:20px; text-align:center; border: 5px solid #787878">
-            <img src="../images/strativia-logo.png" alt="Strativia logo" >
-            <span style="font-size:50px; font-weight:bold">Certificate of Completion</span>
-            <br><br>
-            <span style="font-size:25px"><i>This is to certify that</i></span>
-            <br><br>
-            <span style="font-size:30px"><b>${user.name}</b></span><br/><br/>
-            <span style="font-size:25px"><i>has completed the course</i></span> <br/><br/>
-            <span style="font-size:30px">Job Discrimination at Work Place</span> <br/><br/>
-            <span style="font-size:25px"><i>Completed Date</i></span><br>
-            <span style="font-size:25px"><i>${today.toLocaleDateString("en-US", options)}</i></span><br>
+        var gameOverHTML = `<center id='HTMLtoPDF' class="certificate">
+        <div class="row certificate center-align">
+          <div class="col s12" style=" padding:20px; text-align:center; border: 10px solid #787878">
+            <div class="col s12" style=" padding:20px; text-align:center; border: 5px solid #787878">
+              <div>
+                <img class="cert-img" src="../images/strativia-logo.png" alt="Strativia logo" >
+              </div>
+              <span class="cert-title" >Certificate of Completion</span>
+              <br><br>
+              <span "cert-info"><i>This is to certify that</i></span>
+              <br><br>
+              <span class="cert-pre-title"><b>${user.name}</b></span><br/><br/>
+              <span class="cert-info"><i>has completed the course</i></span> <br/><br/>
+              <span class="cert-pre-title">Job Discrimination at Work Place</span> <br/><br/>
+              <span class="cert-info"><i>Completed Date</i></span><br>
+              <span class="cert-info"><i>${today.toLocaleDateString("en-US", options)}</i></span><br>
+            </div>
           </div>
         </div>
         </center>`;
@@ -124,10 +127,10 @@ $(document).ready(function () {
   // create questions
   var questions = [
       new Question("Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitatios aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum", ["Discrimination", "Important laws ","Important  ", "Laws "], "Important laws "),
-      new Question("Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore ma quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum", ["How to prevent discrimination ", "Sexual Harassment ", "Contact EEOC", "Pregnancy"], "Pregnancy"),
-      new Question("Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum", ["Harassment1", "Race/Color","Discrimination", "How to prevent discrimination "], "Race/Color"),
-      new Question("Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum", ["Equal Pay / Compensation", "Python", "Discrimination", "All"], "All"),
-      new Question("Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum", ["How to prevent discrimination ", "Library", "Discrimination", "All"], "Library")
+      // new Question("Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore ma quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum", ["How to prevent discrimination ", "Sexual Harassment ", "Contact EEOC", "Pregnancy"], "Pregnancy"),
+      // new Question("Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum", ["Harassment1", "Race/Color","Discrimination", "How to prevent discrimination "], "Race/Color"),
+      // new Question("Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum", ["Equal Pay / Compensation", "Python", "Discrimination", "All"], "All"),
+      // new Question("Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum", ["How to prevent discrimination ", "Library", "Discrimination", "All"], "Library")
   ];
 
   // create quiz
@@ -136,7 +139,6 @@ $(document).ready(function () {
   // display quiz
   populate();
 
-});
 
 
 

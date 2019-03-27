@@ -84,3 +84,40 @@ body {
 .buttons {
   margin: 5px;
 }
+
+.cert-img {
+  width: 100%;
+  height: auto;
+  max-width: 640px;
+}
+
+.certificate {
+  max-width: 900px;
+  margin: auto;
+}
+
+.cert-title {
+  font-size: 50px;
+  font-weight: bold;
+}
+
+.cert-pre-title {
+  font-size: 30px;
+}
+
+.cert-info {
+  font-size: 25px;
+}
+
+@media only screen and (max-width: 640px) {
+  .cert-title {
+    font-size: 30px;
+  }
+  .cert-pre-title {
+    font-size: 25px;
+  }
+
+  .cert-info {
+    font-size: 20px;
+  }
+}
