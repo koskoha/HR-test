@@ -21,7 +21,7 @@
 
   function sendEmail() {
     const user = getUserInfo();
-    window.open(`mailto:klyuchko92@gmail.com?subject=Certificate form ${user.name}&body=Employee Name: ${user.name};    Employee Address: ${user.address}`);
+    window.open(`mklyuchko@strativia.com?subject=Certificate form ${user.name}&body=Employee Name: ${user.name};    Employee Address: ${user.address}`);
   }
 
   function populate() {
@@ -100,7 +100,7 @@
           <div class="col s12" style=" padding:20px; text-align:center; border: 10px solid #787878">
             <div class="col s12" style=" padding:20px; text-align:center; border: 5px solid #787878">
               <div>
-                <img class="cert-img" src="../images/strativia-logo.png" alt="Strativia logo" >
+                <img class="cert-img" src="./images/strativia-logo.png" alt="Strativia logo" >
               </div>
               <span class="cert-title" >Certificate of Completion</span>
               <br><br>
