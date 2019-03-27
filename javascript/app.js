@@ -24,14 +24,14 @@
       element.click();
 
       document.body.removeChild(element);
-      return
+    }else {
+      html2canvas($('#HTMLtoPDF')[0], {windowWidth: 860}).then(function(canvas) {
+        let image = canvas.toDataURL('image/png');
+        let doc = new jsPDF('p','mm');
+        doc.addImage(image,'PNG', 0, 10);
+        doc.save('certificate.pdf');
+      });
     }
-    html2canvas($('#HTMLtoPDF')[0], {windowWidth: 860}).then(function(canvas) {
-      let image = canvas.toDataURL('image/png');
-      let doc = new jsPDF('p','mm');
-      doc.addImage(image,'PNG', 0, 10);
-      doc.save('certificate.pdf');
-    });
   }
 
   function sendEmail() {
