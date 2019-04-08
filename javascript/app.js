@@ -58,6 +58,16 @@
     });
   }
 
+  function renderChoices(choices){
+    let btns = document.getElementById('btn-choices');
+    btns.innerHTML="";
+    let block = ''
+    choices.forEach((el, i) => {
+      block += `<div class=" buttons col s12 "><button class="btn white black-text col s12" id="btn${i}"><span id="choice${i}"></span></button></div>`
+    });
+    btns.innerHTML = block;
+  }
+
   function populate() {
       if(quiz.isEnded()) {
           showCertificate();
@@ -70,6 +80,7 @@
 
           // show options
           var choices = quiz.getQuestionIndex().choices;
+          renderChoices(choices);
           for(var i = 0; i < choices.length; i++) {
               var element = document.getElementById("choice" + i);
               element.innerHTML = choices[i];
@@ -156,7 +167,15 @@
 
   // create questions
   var questions = [
-      new Question("Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitatios aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum", ["Discrimination", "Important laws ","Important  ", "Laws "], "Important laws "),
+      new Question("Sexual harassment is behavior of a sexual nature that is", ["Unwanted and unwelcome to the recipient", "Innocent to all but the most sensitive","Public and clearly offensive to most witnesses"], "Unwanted and unwelcome to the recipient"),
+
+      new Question('"Quid pro Quo" sexual harassment means that', ["The work environment is offensive", "Sexual favors are demanded in exchange for job benefits or under threat of job penalties","A sexual assault occurs in the workplace"], "Sexual favors are demanded in exchange for job benefits or under threat of job penalties"),
+
+      new Question("If a male employee is attracted to a female employee and asks her out on a first date; is this harassment?", ["Yes", "No"], "No"),
+
+      new Question('When a female employee is told by supervisor, "you could go far in this company, if you just dressed more femininely;" is this harassment?', ["Yes", "No"], "Yes"),
+
+      new Question("A person who is being sexually harassed should", ["Learn to live with it", "Tell the harasser to stop the unacceptable behavior","Tell their co-workers about it"], "Tell the harasser to stop the unacceptable behavior"),
   ];
 
   // create quiz
