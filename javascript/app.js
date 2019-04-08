@@ -76,7 +76,7 @@
       else {
           // show question
           var element = document.getElementById("question");
-          element.innerHTML = quiz.getQuestionIndex().text;
+          element.innerHTML = `<b style="font-size: 25px">${quiz.getQuestionIndex().text}</b>`;
 
           // show options
           var choices = quiz.getQuestionIndex().choices;
