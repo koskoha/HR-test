@@ -41,21 +41,27 @@
 
   function sendEmail() {
     const { name, address, email } = getUserInfo();
-    $.ajax({
-      type: "POST",
-      url: "https://script.google.com/macros/s/AKfycbzKDBe0BIrqXuQq3shfxGv4Y2k7QiqQ2sWVNeMCIzwIbQz8NeY/exec",
-      data: "name=" + name + "&address=" + address+ "&email=" + email,
-      success: function(resp) {
-        console.log(resp);
-        if (resp.result == "success") {
-          M.toast({html: 'We successfully receive your certificate. Thank you.', classes: 'rounded toast-success'})
-        } else {
-          var toastHTML = '<span>We experiencing technical issues at this time. Please let us know about this issue. Sorry for any inconvenience.</span><button onclick="sendEmail()" class="btn-flat toast-action">Please Let Us Know</button>';
-          M.toast({html: toastHTML, classes: 'rounded red darken-1', displayLength: 10000})
-            console.log(resp.data.message);
+    try{
+      $.ajax({
+        type: "POST",
+        url: "https://script.google.com/macros/s/AKfycbzKDBe0BIrqXuQq3shfxGv4Y2k7QiqQ2sWVNeMCIzwIbQz8NeY/exec",
+        data: "name=" + name + "&address=" + address+ "&email=" + email,
+        success: function(resp) {
+          console.log(resp);
+          if (resp.result == "success") {
+            M.toast({html: 'We successfully receive your certificate. Thank you.', classes: 'rounded toast-success'})
+          } else {
+            var toastHTML = '<span>We experiencing technical issues at this time. Please let us know about this issue. Sorry for any inconvenience.</span><button onclick="sendEmail()" class="btn-flat toast-action">Please Let Us Know</button>';
+            M.toast({html: toastHTML, classes: 'rounded red darken-1', displayLength: 10000})
+              console.log(resp.data.message);
+          }
         }
-      }
-    });
+      });
+    }catch(e){
+      var toastHTML = '<span>We experiencing technical issues at this time. Please let us know about this issue. Sorry for any inconvenience.</span><button onclick="sendEmail()" class="btn-flat toast-action">Please Let Us Know</button>';
+      M.toast({html: toastHTML, classes: 'rounded red darken-1', displayLength: 10000})
+      console.log(resp.data.message);
+    }
   }
 
   function renderChoices(choices){
