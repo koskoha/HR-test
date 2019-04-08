@@ -8,7 +8,8 @@ $(document).ready(function () {
   function submitForm() {
     var address = $("#address").val();
     var name = $("#name").val();
-    var url = "test.html?name=" + encodeURIComponent(name) + "&address=" + encodeURIComponent(address)
+    var email = $("#email").val();
+    var url = "test.html?name=" + encodeURIComponent(name) + "&address=" + encodeURIComponent(address) + "&email=" + encodeURIComponent(email)
     window.location.href = url;
   }
 

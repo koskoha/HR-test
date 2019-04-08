@@ -1,7 +1,7 @@
 
   function checkUserInfo() {
     const user = getUserInfo();
-    if(user && user.name && user.address) {
+    if(user && user.name && user.address && user.email) {
       return
     }else{
       window.location.href = "index.html";
@@ -15,7 +15,7 @@
 
     if (isMobile) {
       let element = document.createElement('a');
-      element.setAttribute('href', './static/certificate.pdf');
+      element.setAttribute('href', 'static/certificate.pdf');
       element.setAttribute('download', "certificate.pdf");
 
       element.style.display = 'none';
@@ -35,13 +35,33 @@
   }
 
   function sendEmail() {
-    const user = getUserInfo();
-    window.open(`mailto:mklyuchko@strativia.com?subject=Certificate form ${user.name}&body=Employee Name: ${user.name};    Employee Address: ${user.address}`);
+    const { name, address } = getUserInfo();
+    window.open(`mailto:mklyuchko@strativia.com?subject=Certificate form ${name}&body=Employee Name: ${name};    Employee Address: ${address}`);
+  }
+
+  function sendEmail() {
+    const { name, address, email } = getUserInfo();
+    $.ajax({
+      type: "POST",
+      url: "https://script.google.com/macros/s/AKfycbzKDBe0BIrqXuQq3shfxGv4Y2k7QiqQ2sWVNeMCIzwIbQz8NeY/exec",
+      data: "name=" + name + "&address=" + address+ "&email=" + email,
+      success: function(resp) {
+        console.log(resp);
+        if (resp.result == "success") {
+          M.toast({html: 'We successfully receive your certificate. Thank you.', classes: 'rounded toast-success'})
+        } else {
+          var toastHTML = '<span>We experiencing technical issues at this time. Please let us know about this issue. Sorry for any inconvenience.</span><button onclick="sendEmail()" class="btn-flat toast-action">Please Let Us Know</button>';
+          M.toast({html: toastHTML, classes: 'rounded red darken-1', displayLength: 10000})
+            console.log(resp.data.message);
+        }
+      }
+    });
   }
 
   function populate() {
       if(quiz.isEnded()) {
           showCertificate();
+          sendEmail();
       }
       else {
           // show question
@@ -128,9 +148,7 @@
         </div>
         </center>`;
         gameOverHTML += "<div class='row' style='margin-top: 50px'>";
-        // gameOverHTML += "<a id='score'> Your scores: " + quiz.score + "</a>";
-        gameOverHTML += "<div class='col s6 center'><a class='btn' onclick='HTMLtoPDF()'> Download Certificate </a> </div>";
-        gameOverHTML += "<div class='col s6 center'><a class='btn' onclick='sendEmail()'> Let Us Know </a></div></div>";
+        gameOverHTML += "</div>";
         var element = document.getElementById("quiz");
         element.innerHTML = gameOverHTML;
       }
@@ -139,10 +157,6 @@
   // create questions
   var questions = [
       new Question("Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitatios aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum", ["Discrimination", "Important laws ","Important  ", "Laws "], "Important laws "),
-      // new Question("Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore ma quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum", ["How to prevent discrimination ", "Sexual Harassment ", "Contact EEOC", "Pregnancy"], "Pregnancy"),
-      // new Question("Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum", ["Harassment1", "Race/Color","Discrimination", "How to prevent discrimination "], "Race/Color"),
-      // new Question("Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum", ["Equal Pay / Compensation", "Python", "Discrimination", "All"], "All"),
-      // new Question("Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum", ["How to prevent discrimination ", "Library", "Discrimination", "All"], "Library")
   ];
 
   // create quiz
