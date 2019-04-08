@@ -10,30 +10,6 @@
 
   checkUserInfo();
 
-  function HTMLtoPDF(){
-    var isMobile = window.matchMedia("only screen and (max-width: 760px)").matches;
-
-    if (isMobile) {
-      let element = document.createElement('a');
-      element.setAttribute('href', 'static/certificate.pdf');
-      element.setAttribute('download', "certificate.pdf");
-
-      element.style.display = 'none';
-      document.body.appendChild(element);
-
-      element.click();
-
-      document.body.removeChild(element);
-    }else {
-      html2canvas($('#HTMLtoPDF')[0], {windowWidth: 860}).then(function(canvas) {
-        let image = canvas.toDataURL('image/png');
-        let doc = new jsPDF('p','mm');
-        doc.addImage(image,'PNG', 0, 10);
-        doc.save('certificate.pdf');
-      });
-    }
-  }
-
   function sendEmail() {
     const { name, address } = getUserInfo();
     window.open(`mailto:mklyuchko@strativia.com?subject=Certificate form ${name}&body=Employee Name: ${name};    Employee Address: ${address}`);
